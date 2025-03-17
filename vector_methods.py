@@ -95,7 +95,7 @@ if __name__ == '__main__':
   vm.transpose(zMatrix)
 
   crossVector = vm.cross(uVector, vVector)
-  print('Is the cross product linearly independent.\n Dot should equal 0')
+  print('If the cross product is linearly independent,\n the dot product should equal 0')
   vm.DEBUG = False
   result = vm.dot(vVector, crossVector)
   if result== 0:

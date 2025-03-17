@@ -4,7 +4,7 @@ import os
 class vm: 
 
   DEBUG = True
-  
+
 #
   def add(self, right):
     pass
@@ -37,7 +37,7 @@ class vm:
   def dot(self, right):
     pass
 #
-  def debugprint();
+  def debugprint():
     pass
 
 if __name__ == '__main__':
@@ -53,3 +53,4 @@ if __name__ == '__main__':
 
 
   print(uMatrix)
+  print(uVector)

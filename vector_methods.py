@@ -59,6 +59,16 @@ class vm:
     result = np.dot(self, right)
     vm.debugprint(self, right, 'DOT PRODUCT', result)
     return result
+  
+
+#
+  def rotation2d(self, theta):
+    pass
+
+#  
+  def rotation3d(self, axis, theta):
+    pass
+
 #
   def debugprint(self, right, label, solution):
     if vm.DEBUG:
@@ -109,7 +119,7 @@ if __name__ == '__main__':
 
 #
 # The following section is for testing inverse matrix generation
-# the identity matrix as a product of matrix multiplication
+# the identity matrix should be the product of matrix multiplication
 
   print('Want to test if matricies are inverse of each other\n The product should generate an identitiy matrix')
   aMatrix = np.array([[1, 2, -1], [-2, 0, 1], [1, -1, 0]])

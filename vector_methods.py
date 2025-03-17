@@ -3,6 +3,8 @@ import os
 
 class vm: 
 
+  DEBUG = True
+  
 #
   def add(self, right):
     pass
@@ -14,9 +16,29 @@ class vm:
 #
   def multiply(self, right):
     pass
-  
-       
 
+#
+  def scalermult(self, scaler):
+    pass
+
+# 
+  def divide(self, right):
+    pass
+
+#     
+  def transpose(self):
+    pass
+
+#
+  def cross(self, right):
+    pass
+
+#
+  def dot(self, right):
+    pass
+#
+  def debugprint();
+    pass
 
 if __name__ == '__main__':
   uMatrix = np.random.randint(-20, 20, size=(3, 3))

@@ -1,8 +1,20 @@
 import numpy as np
 import os
 
-class vm:
-  pass
+class vm: 
+
+#
+  def add(self, right):
+    pass
+
+#    
+  def sub(self, right):
+    pass
+
+#
+  def multiply(self, right):
+    pass
+  
        
 
 

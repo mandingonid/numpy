@@ -1,6 +1,6 @@
 import numpy as np
 import os
-import matplotlib.pyplot as mplp
+import matplotlib.pyplot as plt
 
 
 class vm: 
@@ -196,20 +196,20 @@ if __name__ == '__main__':
 #
 # Moving on to actually graphically plotting vectors using matplotlib with pyplot
 #
-fig = mplp.figure()
-axis = mplp.axes(projection='3d')
-axis.set_xlim([-20, 20])
-axis.set_ylim([-20, 20])
-mplp.xlabel('X')
-mplp.ylabel('Y')
-mplp.title('3D VECTOR PLOTS')
+  fig = plt.figure()
+  axis = plt.axes(projection='3d')
+  axis.set_xlim([-20, 20])
+  axis.set_ylim([-20, 20])
+  plt.xlabel('X')
+  plt.ylabel('Y')
+  plt.title('3D VECTOR PLOTS')
 
-startAt = [0, 0, 0]
-axis.quiver(startAt[0], startAt[1], startAt[2], xVector[0], xVector[1], xVector[2]).set_color('black')
-axis.quiver(startAt[0], startAt[1], startAt[2], yVector[0], yVector[1], yVector[2]).set_color('green')
-orthogonalVector = vm.cross(xVector, yVector)
-axis.quiver(startAt[0], startAt[1], startAt[2], orthogonalVector[0], orthogonalVector[1], orthogonalVector[2]).set_color('red')
-dotProduct = vm.dot(orthogonalVector, xVector)
-print(f'dot product-> {dotProduct}')
-mplp.show()
+  startAt = [0, 0, 0]
+  axis.quiver(startAt[0], startAt[1], startAt[2], xVector[0], xVector[1], xVector[2]).set_color('black')
+  axis.quiver(startAt[0], startAt[1], startAt[2], yVector[0], yVector[1], yVector[2]).set_color('green')
+  orthogonalVector = vm.cross(xVector, yVector)
+  axis.quiver(startAt[0], startAt[1], startAt[2], orthogonalVector[0], orthogonalVector[1], orthogonalVector[2]).set_color('red')
+  dotProduct = vm.dot(orthogonalVector, xVector)
+  print(f'dot product-> {dotProduct}')
+  plt.show()
 

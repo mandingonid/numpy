@@ -62,12 +62,38 @@ class vm:
   
 
 #
-  def rotation2d(self, theta):
-    pass
 
+
+  def rotation2d(self, theta):
+    rotationMatrix = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
+    result = vm.multiply(self, rotationMatrix)
+    if vm.DEBUG:
+      print(self)
+      print(f'theta-> {theta}')
+      print('ROTATE')
+      print(f'{result}\n')  
+    return result
 #  
-  def rotation3d(self, axis, theta):
-    pass
+  def rotation3d(self, axis, angle):
+    if axis == 'x':
+      phi = angle
+      rotationMatrix = np.array([[1, 0, 0], [0, np.cos(phi), -np.sin(phi)], [0, np.sin(phi), np.cos(phi)]])
+    elif axis == 'y':
+      theta = angle
+      rotationMatrix = np.array([[np.cos(theta), 0, np.sin(theta)], [0, 1, 0], [-np.sin(theta), 0, np.cos(theta)]])
+    elif axis == 'z':
+      psi = angle
+      rotationMatrix = np.array([[np.cos(psi), -np.sin(psi), 0], [np.sin(psi), np.cos(psi), 0], [0, 0, 1]])
+    else:
+      print('ERROR in rotation matrix dependant axis')
+      exit(-1)
+    vm.DEBUG = False
+    result = vm.multiply(self, rotationMatrix)
+    vm.DEBUG = True
+    angle
+    vm.debugprint(self,rotationMatrix, 'ROTATE '+axis+' '+str(angle) +' 3D', result)
+    return result
+
 
 #
   def debugprint(self, right, label, solution):
@@ -77,16 +103,23 @@ class vm:
         print(' ')
       print(right)
       print(label)
-      print(solution)
-      print('\n')   
-
+      print(f'{solution}\n')
+      
+      
 if __name__ == '__main__':
-  uMatrix = np.random.randint(-20, 20, size=(3, 3))
-  vMatrix = np.random.randint(-20, 20, size=(3, 3))
-  wMatrix = np.random.randint(-20, 20, size=(3, 3))
-  xMatrix = np.random.randint(-20, 20, size=(3, 3)) 
-  yMatrix = np.random.randint(-20, 20, size=(3, 3))
-  zMatrix = np.random.randint(-20, 20, size=(3, 3))
+  uMatrix33 = np.random.randint(-20, 20, size=(3, 3))
+  vMatrix33 = np.random.randint(-20, 20, size=(3, 3))
+  wMatrix33 = np.random.randint(-20, 20, size=(3, 3))
+  xMatrix33 = np.random.randint(-20, 20, size=(3, 3)) 
+  yMatrix33 = np.random.randint(-20, 20, size=(3, 3)) 
+  zMatrix33 = np.random.randint(-20, 20, size=(3, 3))
+
+  uMatrix22 = np.random.randint(-20, 20, size=(2, 2))
+  vMatrix22 = np.random.randint(-20, 20, size=(2, 2))
+  wMatrix22 = np.random.randint(-20, 20, size=(2, 2))
+  xMatrix22 = np.random.randint(-20, 20, size=(2, 2)) 
+  yMatrix22 = np.random.randint(-20, 20, size=(2, 2))
+  zMatrix22 = np.random.randint(-20, 20, size=(2, 2))
 
   uVector = np.random.randint(-20, 20, size=(3))
   vVector = np.random.randint(-20, 20, size=(3))
@@ -96,13 +129,13 @@ if __name__ == '__main__':
   zVector = np.random.randint(-20, 20, size=(3))
  
 
-  vm.add(uMatrix, vMatrix)
-  vm.sub(vMatrix, wMatrix)
-  vm.multiply(wMatrix, xMatrix)
-  vm.scalermult(zMatrix, 3)
-  vm.divide(xMatrix, yMatrix)
+  vm.add(uMatrix33, vMatrix33)
+  vm.sub(vMatrix33, wMatrix33)
+  vm.multiply(wMatrix33, xMatrix33)
+  vm.scalermult(zMatrix33, 3)
+  vm.divide(xMatrix33, yMatrix33)
 
-  vm.transpose(zMatrix)
+  vm.transpose(zMatrix33)
 
   crossVector = vm.cross(uVector, vVector)
   print('If the cross product is linearly independent,\n the dot product should equal 0')
@@ -116,6 +149,26 @@ if __name__ == '__main__':
   vm.dot(vVector, crossVector)
 
   vm.dot(vVector, wVector)
+
+#
+# Perform a sequence of matrix rotations around a selected axis. Initially 2D matricies followed
+# by 3D matricies
+
+  print('The following section is to test Matrix Rotation methods for 2x2 and 3x3 matricies.\n \
+  2x2 matricies rotation around the Z axis "Yaw". 3x3 matricies will rotate around X "Roll", Y "Pitch", \
+  and Z "Yaw"\n axies individually. Axis of rotation is user specified.\n')
+
+# 2D rotations
+  theta = np.radians(180)
+  rotatedMatrix = vm.rotation2d(xMatrix22, theta)
+
+# 3D rotations
+  angle = np.radians(90)
+  rootatedMatrix = vm.rotation3d(zMatrix33, 'x', angle)
+  angle = np.radians(180)
+  rootatedMatrix = vm.rotation3d(yMatrix33, 'y', angle)
+  angle = np.radians(270)
+  rotatedMatrix = vm.rotation3d(xMatrix33, 'z', angle)
 
 #
 # The following section is for testing inverse matrix generation

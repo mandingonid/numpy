@@ -1,5 +1,7 @@
 import numpy as np
 import os
+import matplotlib.pyplot as mplp
+
 
 class vm: 
 
@@ -91,7 +93,7 @@ class vm:
     result = vm.multiply(self, rotationMatrix)
     vm.DEBUG = True
     angle
-    vm.debugprint(self,rotationMatrix, 'ROTATE '+axis+' '+str(angle) +' 3D', result)
+    vm.debugprint(self,rotationMatrix,'ROTATION ' + axis + ' ' + str(angle) + ' 3D', result)
     return result
 
 
@@ -121,12 +123,12 @@ if __name__ == '__main__':
   yMatrix22 = np.random.randint(-20, 20, size=(2, 2))
   zMatrix22 = np.random.randint(-20, 20, size=(2, 2))
 
-  uVector = np.random.randint(-20, 20, size=(3))
-  vVector = np.random.randint(-20, 20, size=(3))
-  wVector = np.random.randint(-20, 20, size=(3))
-  xVector = np.random.randint(-20, 20, size=(3))
-  yVector = np.random.randint(-20, 20, size=(3))
-  zVector = np.random.randint(-20, 20, size=(3))
+  uVector = np.random.randint(-10, 10, size=(3))
+  vVector = np.random.randint(-10, 10, size=(3))
+  wVector = np.random.randint(-10, 10, size=(3))
+  xVector = np.random.randint(-10, 10, size=(3))
+  yVector = np.random.randint(-10, 10, size=(3))
+  zVector = np.random.randint(-10, 10, size=(3))
  
 
   vm.add(uMatrix33, vMatrix33)
@@ -190,3 +192,24 @@ if __name__ == '__main__':
   vm.multiply(aMatrix, bMatrix)
   vm.multiply(cMatrix, dMatrix)
   vm.multiply(eMatrix, laInvMatrix)
+
+#
+# Moving on to actually graphically plotting vectors using matplotlib with pyplot
+#
+fig = mplp.figure()
+axis = mplp.axes(projection='3d')
+axis.set_xlim([-20, 20])
+axis.set_ylim([-20, 20])
+mplp.xlabel('X')
+mplp.ylabel('Y')
+mplp.title('3D VECTOR PLOTS')
+
+startAt = [0, 0, 0]
+axis.quiver(startAt[0], startAt[1], startAt[2], xVector[0], xVector[1], xVector[2]).set_color('black')
+axis.quiver(startAt[0], startAt[1], startAt[2], yVector[0], yVector[1], yVector[2]).set_color('green')
+orthogonalVector = vm.cross(xVector, yVector)
+axis.quiver(startAt[0], startAt[1], startAt[2], orthogonalVector[0], orthogonalVector[1], orthogonalVector[2]).set_color('red')
+dotProduct = vm.dot(orthogonalVector, xVector)
+print(f'dot product-> {dotProduct}')
+mplp.show()
+

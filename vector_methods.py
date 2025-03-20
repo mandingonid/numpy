@@ -146,7 +146,7 @@ if __name__ == '__main__':
   if result== 0:
     print('PASSED, vector is linearly independent')
   else:
-    print('FAILED, vector is linearly dependent')
+    print('FAILED, vector is NOT linearly dependent')
   vm.DEBUG = True
   vm.dot(vVector, crossVector)
 

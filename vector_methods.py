@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-
+from mpl_toolkits.mplot3d import axis3d
 
 class vm: 
 
@@ -123,12 +123,12 @@ if __name__ == '__main__':
   yMatrix22 = np.random.randint(-20, 20, size=(2, 2))
   zMatrix22 = np.random.randint(-20, 20, size=(2, 2))
 
-  uVector = np.random.randint(-10, 10, size=(3))
-  vVector = np.random.randint(-10, 10, size=(3))
-  wVector = np.random.randint(-10, 10, size=(3))
-  xVector = np.random.randint(-10, 10, size=(3))
-  yVector = np.random.randint(-10, 10, size=(3))
-  zVector = np.random.randint(-10, 10, size=(3))
+  uVector = np.random.randint(-20, 20, size=(3))
+  vVector = np.random.randint(-20, 20, size=(3))
+  wVector = np.random.randint(-20, 20, size=(3))
+  xVector = np.random.randint(-20, 20, size=(3))
+  yVector = np.random.randint(-20, 20, size=(3))
+  zVector = np.random.randint(-20, 20, size=(3))
  
 
   vm.add(uMatrix33, vMatrix33)
@@ -197,18 +197,20 @@ if __name__ == '__main__':
 # Moving on to actually graphically plotting vectors using matplotlib with pyplot
 #
   fig = plt.figure()
-  axis = plt.axes(projection='3d')
+  axis = fig.add_subplot(111, projection='3d')
   axis.set_xlim([-20, 20])
   axis.set_ylim([-20, 20])
-  plt.xlabel('X')
-  plt.ylabel('Y')
-  plt.title('3D VECTOR PLOTS')
+  axis.set_zlim([-20, 20])
+  axis.set_xlabel('X')
+  axis.set_ylabel('Y')
+  axis.set_zlabel('Z')
+  axis.set_title('3D VECTOR PLOTS')
 
   startAt = [0, 0, 0]
-  axis.quiver(startAt[0], startAt[1], startAt[2], xVector[0], xVector[1], xVector[2]).set_color('black')
-  axis.quiver(startAt[0], startAt[1], startAt[2], yVector[0], yVector[1], yVector[2]).set_color('green')
+  axis.quiver3D(startAt[0], startAt[1], startAt[2], xVector[0], xVector[1], xVector[2], arrow_length_ratio=0.4).set_color('black')
+  axis.quiver3D(startAt[0], startAt[1], startAt[2], yVector[0], yVector[1], yVector[2], arrow_length_ratio=0.4).set_color('green')
   orthogonalVector = vm.cross(xVector, yVector)
-  axis.quiver(startAt[0], startAt[1], startAt[2], orthogonalVector[0], orthogonalVector[1], orthogonalVector[2]).set_color('red')
+  axis.quiver3D(startAt[0], startAt[1], startAt[2], orthogonalVector[0], orthogonalVector[1], orthogonalVector[2], arrow_length_ratio=0.4).set_color('red')
   dotProduct = vm.dot(orthogonalVector, xVector)
   print(f'dot product-> {dotProduct}')
   plt.show()

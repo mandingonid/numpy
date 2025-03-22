@@ -61,11 +61,18 @@ class vm:
     result = np.dot(self, right)
     vm.debugprint(self, right, 'DOT PRODUCT', result)
     return result
-  
 
 #
+  def inverse(self):
+    result = np.linalg.inv(self)
+    if vm.DEBUG:
+      print(self)
+      print('INVERSE MATRIX')
+      print(f'{result}\n\n')
+    return result
+    
 
-
+#
   def rotation2d(self, theta):
     rotationMatrix = np.array([[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]])
     result = vm.multiply(self, rotationMatrix)
@@ -139,6 +146,8 @@ if __name__ == '__main__':
 
   vm.transpose(zMatrix33)
 
+  vm.inverse(yMatrix33)
+
   crossVector = vm.cross(uVector, vVector)
   print('If the cross product is linearly independent,\n the dot product should equal 0')
   vm.DEBUG = False
@@ -151,6 +160,8 @@ if __name__ == '__main__':
   vm.dot(vVector, crossVector)
 
   vm.dot(vVector, wVector)
+
+
 
 #
 # Perform a sequence of matrix rotations around a selected axis. Initially 2D matricies followed
@@ -187,7 +198,7 @@ if __name__ == '__main__':
 # Compute the inverse matrix using "inv()" from the numpy, 
 # linear algebra package library
   eMatrix = np.random.randint(-20, 20, size=(3, 3))
-  laInvMatrix = np.linalg.inv(eMatrix)
+  laInvMatrix = vm.inverse(eMatrix)
 
   vm.multiply(aMatrix, bMatrix)
   vm.multiply(cMatrix, dMatrix)

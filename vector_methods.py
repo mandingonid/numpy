@@ -198,8 +198,9 @@ if __name__ == '__main__':
 # Compute the inverse matrix using "inv()" from the numpy, 
 # linear algebra package library
   eMatrix = np.random.randint(-20, 20, size=(3, 3))
+  vm.DEBUG = False
   laInvMatrix = vm.inverse(eMatrix)
-
+  vm.DEBUG = True
   vm.multiply(aMatrix, bMatrix)
   vm.multiply(cMatrix, dMatrix)
   vm.multiply(eMatrix, laInvMatrix)
@@ -207,7 +208,7 @@ if __name__ == '__main__':
 #
 # Moving on to actually graphically plotting vectors using matplotlib with pyplot
 #
-  fig = plt.figure()
+  fig = plt.figure('Linear Independence')
   axis = fig.add_subplot(111, projection='3d')
   axis.set_xlim([-20, 20])
   axis.set_ylim([-20, 20])

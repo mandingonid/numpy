@@ -117,26 +117,26 @@ class vm:
       
       
 if __name__ == '__main__':
-  uMatrix33 = np.random.randint(-20, 20, size=(3, 3))
-  vMatrix33 = np.random.randint(-20, 20, size=(3, 3))
-  wMatrix33 = np.random.randint(-20, 20, size=(3, 3))
-  xMatrix33 = np.random.randint(-20, 20, size=(3, 3)) 
-  yMatrix33 = np.random.randint(-20, 20, size=(3, 3)) 
-  zMatrix33 = np.random.randint(-20, 20, size=(3, 3))
+  uMatrix33 = np.random.randint(-30, 30 , size=(3, 3))
+  vMatrix33 = np.random.randint(-30 , 30 , size=(3, 3))
+  wMatrix33 = np.random.randint(-30 , 30 , size=(3, 3))
+  xMatrix33 = np.random.randint(-30 , 30 , size=(3, 3)) 
+  yMatrix33 = np.random.randint(-30 , 30 , size=(3, 3)) 
+  zMatrix33 = np.random.randint(-30 , 30 , size=(3, 3))
 
-  uMatrix22 = np.random.randint(-20, 20, size=(2, 2))
-  vMatrix22 = np.random.randint(-20, 20, size=(2, 2))
-  wMatrix22 = np.random.randint(-20, 20, size=(2, 2))
-  xMatrix22 = np.random.randint(-20, 20, size=(2, 2)) 
-  yMatrix22 = np.random.randint(-20, 20, size=(2, 2))
-  zMatrix22 = np.random.randint(-20, 20, size=(2, 2))
+  uMatrix22 = np.random.randint(-30 , 30 , size=(2, 2))
+  vMatrix22 = np.random.randint(-30 , 30 , size=(2, 2))
+  wMatrix22 = np.random.randint(-30 , 30 , size=(2, 2))
+  xMatrix22 = np.random.randint(-30 , 30 , size=(2, 2)) 
+  yMatrix22 = np.random.randint(-30 , 30 , size=(2, 2))
+  zMatrix22 = np.random.randint(-30 , 30 , size=(2, 2))
 
-  uVector = np.random.randint(-20, 20, size=(3))
-  vVector = np.random.randint(-20, 20, size=(3))
-  wVector = np.random.randint(-20, 20, size=(3))
-  xVector = np.random.randint(-20, 20, size=(3))
-  yVector = np.random.randint(-20, 20, size=(3))
-  zVector = np.random.randint(-20, 20, size=(3))
+  uVector = np.random.randint(-30 , 30, size=(3))
+  vVector = np.random.randint(-30, 30, size=(3))
+  wVector = np.random.randint(-30, 30, size=(3))
+  xVector = np.random.randint(-30, 30, size=(3))
+  yVector = np.random.randint(-30, 30, size=(3))
+  zVector = np.random.randint(-30, 30, size=(3))
  
 
   vm.add(uMatrix33, vMatrix33)
@@ -198,7 +198,7 @@ if __name__ == '__main__':
 # Generate a matrix of random integers using the numpy random integer method.
 # Compute the inverse matrix using "inv()" from the numpy, 
 # linear algebra package library
-  eMatrix = np.random.randint(-20, 20, size=(3, 3))
+  eMatrix = np.random.randint(-30, 30, size=(3, 3))
   vm.DEBUG = False
   laInvMatrix = vm.inverse(eMatrix)
   vm.DEBUG = True
@@ -211,9 +211,9 @@ if __name__ == '__main__':
 #
   fig = plt.figure('Linear Independence')
   axis = fig.add_subplot(111, projection='3d')
-  axis.set_xlim([-20, 20])
-  axis.set_ylim([-20, 20])
-  axis.set_zlim([-20, 20])
+  axis.set_xlim([-50, 50])
+  axis.set_ylim([-50, 50])
+  axis.set_zlim([-50, 50])
   axis.set_xlabel('X')
   axis.set_ylabel('Y')
   axis.set_zlabel('Z')

@@ -33,13 +33,13 @@ class vm:
       print(self)
       print(f'scaler-> {scaler}')
       print('SCALE')
-      print(f'{result}\n')
+      print(f'{result}\n----------------------\n')
     return result
 
 # 
   def divide(self, right):
     result = self / right;
-    vm.debugprint(self, right, 'QUOTIENT', result)
+    vm.debugprint(self, right, 'QUOTIENT Undefined At This Time', result)
     return result
 
 #     
@@ -48,7 +48,7 @@ class vm:
     if vm.DEBUG:
       print(self)
       print('TRANSPOSE')
-      print(f'{result}\n')
+      print(f'{result}\n----------------------\n')
     return result
   
 #
@@ -69,7 +69,7 @@ class vm:
     if vm.DEBUG:
       print(self)
       print('INVERSE MATRIX')
-      print(f'{result}\n\n')
+      print(f'{result}\n----------------------\n')
     return result
     
 
@@ -81,7 +81,7 @@ class vm:
       print(self)
       print(f'theta-> {theta}')
       print('ROTATE')
-      print(f'{result}\n')  
+      print(f'{result}\n----------------------\n')  
     return result
 #  
   def rotation3d(self, axis, angle):
@@ -101,7 +101,7 @@ class vm:
     result = vm.multiply(self, rotationMatrix)
     vm.DEBUG = True
     angle
-    vm.debugprint(self,rotationMatrix,'ROTATION ' + axis + ' ' + str(angle) + ' 3D', result)
+    vm.debugprint(self,rotationMatrix,'ROTATION ' + axis + ' axis ' + str(angle) + ' 3D', result)
     return result
 
 
@@ -113,7 +113,7 @@ class vm:
         print(' ')
       print(right)
       print(label)
-      print(f'{solution}\n')
+      print(f'{solution}\n----------------------\n')
       
       
 if __name__ == '__main__':
@@ -206,6 +206,28 @@ if __name__ == '__main__':
   vm.multiply(cMatrix, dMatrix)
   vm.multiply(eMatrix, laInvMatrix)
 
+
+#
+# Problem 3.14
+
+  print("Proof of Theorm 3.10: A square system AX = B of equations has\
+  a unique solution and only if the matrix A is invertable. In\
+  such a case A-inverse*B is the unique solution of the system.")
+
+  aMatrix = np.array([[1, 1, 5], [1, -3, -1], [1, 2, -4]])
+  bVector = np.array([4, 14, -9]) 
+
+  aInverse = vm.inverse(aMatrix)
+  identityMatrix = vm.multiply(aInverse, aMatrix)
+  vm.multiply(aInverse, bVector)
+   
+  print('NEGATIVE TESTCASE non invertable matrix with no unique solution')
+  aMatrix = np.array([[1, 2, 1], [2, 3, 3], [-3, -4, -5]])
+  bVector = np.array([2, 3, -5]) 
+
+  aInverse = vm.inverse(aMatrix)
+  identityMatrix = vm.multiply(aInverse, aMatrix)
+  vm.multiply(aInverse, bVector)
 #
 # Moving on to actually graphically plotting vectors using matplotlib with pyplot
 #
@@ -226,5 +248,6 @@ if __name__ == '__main__':
   axis.quiver3D(startAt[0], startAt[1], startAt[2], orthogonalVector[0], orthogonalVector[1], orthogonalVector[2], arrow_length_ratio=0.4).set_color('red')
   dotProduct = vm.dot(orthogonalVector, xVector)
   print(f'dot product-> {dotProduct}')
+  
   plt.show()
 

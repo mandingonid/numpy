@@ -205,8 +205,6 @@ if __name__ == '__main__':
   vm.multiply(aMatrix, bMatrix)
   vm.multiply(cMatrix, dMatrix)
   vm.multiply(eMatrix, laInvMatrix)
-
-
 #
 # Problem 3.14
 

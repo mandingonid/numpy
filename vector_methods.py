@@ -13,17 +13,17 @@ class vm:
     result = self + right;
     vm.debugprint(self, right, 'SUM', result)
     return result
+
   
 #    
   def sub(self, right):
     result = self - right;
     vm.debugprint(self, right, 'DIFFERENCE', result)
     return result
-
 #
   def multiply(self, right):
     result = np.matmul(self, right)
-    vm.debugprint(self, right, 'MULTIPLY', result)
+    vm.debugprint(self, right, 'MULTIPLY', result)	
     return result
 
 #

@@ -228,6 +228,17 @@ if __name__ == '__main__':
   aInverse = vm.inverse(aMatrix)
   identityMatrix = vm.multiply(aInverse, aMatrix)
   vm.multiply(aInverse, bVector)
+
+
+  aMatrix = np.array([[1, 2, 1], [2, 5, 3], [1, 4, 6]])
+  bVector = np.array([3, 5, -5])
+  aInverse = vm.inverse(aMatrix)
+  identityMatrix = vm.multiply(aInverse, aMatrix)
+  vm.multiply(aInverse, bVector)
+
+  
+
+
 #
 # Moving on to actually graphically plotting vectors using matplotlib with pyplot
 #

@@ -236,12 +236,24 @@ if __name__ == '__main__':
   identityMatrix = vm.multiply(aInverse, aMatrix)
   vm.multiply(aInverse, bVector)
 
-  
 
+  aMatrix = np.array([1, 2, 3], [2, 3, 5], [3, 7, 6]) 
+  bVector = np.array([3, 7, -4])
+  aInverse = vm.inverse(aMatrix)
+  identityMatrix = vm.multiply(aInverse, aMatrix)
+  vm.multiply(aInverse, bVector)
 
+  print('NEGATIVE TESTCASE non invertable matrix with no unique solution')
+  aMatrix = np.array([[1, 2, 1], [2, 3, 3], [-3, -4, -5]])
+  bVector = np.array([2, 3, -5]) 
+
+  aInverse = vm.inverse(aMatrix)
+  identityMatrix = vm.multiply(aInverse, aMatrix)
+  vm.multiply(aInverse, bVector)
 #
 # Moving on to actually graphically plotting vectors using matplotlib with pyplot
-#
+#   
+
   fig = plt.figure('Linear Independence')
   axis = fig.add_subplot(111, projection='3d')
   axis.set_xlim([-50, 50])
